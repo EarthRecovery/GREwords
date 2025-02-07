@@ -20,6 +20,23 @@
 - Elasticsearch
 - Kafka
 
+#### 模块划分
+
+```
+com.grewords
+│── controller        # 处理 API 请求
+│── service           # 业务逻辑层
+│── repository        # 数据访问层
+│── model             # 数据模型
+│── config            # 配置管理
+│── queue             # 消息队列处理（RabbitMQ/Kafka）
+│── search            # Elasticsearch 处理
+│── utils             # 工具类
+│── security          # 安全相关（JWT 认证）
+```
+
+
+
 #### 前端
 
 - Vue/elementUI/js
@@ -32,3 +49,8 @@
 
 - Nginx
 
+
+
+## 任务简析
+
+2025/2/7： 完成MySQL + JPA 构建
