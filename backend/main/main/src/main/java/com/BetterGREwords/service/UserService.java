@@ -23,7 +23,7 @@ public class UserService {
         return true;
     }
 
-    public boolean deleteUser(String username) {
+    public boolean deleteUserByUsername(String username) {
         User user = userDAO.findByUsername(username);
         userDAO.delete(user);
         return true;

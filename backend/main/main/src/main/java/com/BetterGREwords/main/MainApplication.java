@@ -1,6 +1,5 @@
 package com.BetterGREwords.main;
 
-import com.BetterGREwords.model.User;
 import com.BetterGREwords.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +18,7 @@ public class MainApplication {
 		ApplicationContext context = SpringApplication.run(MainApplication.class, args);
 
 		UserService userService = context.getBean(UserService.class);
-		userService.deleteUser("admintest");
+		userService.deleteUserByUsername("admintest");
 		userService.createUser("admintest", "admin@test.cn","password_hash");
 		System.out.println(userService.findByUsername("admintest").getEmail());
 	}

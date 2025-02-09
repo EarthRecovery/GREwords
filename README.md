@@ -45,6 +45,8 @@ com.grewords
 
 - mysql
 
+![image-20250208151856752](D:\DesktopFiles\projects\ProjectGREwords\assets\image-20250208151856752.png)
+
 #### 服务器
 
 - Nginx
