@@ -21,7 +21,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String username;
+    private String name;
 
     @Column()
     private String email;
@@ -39,8 +39,8 @@ public class User {
     @Column()
     private int word_list_user_id;
 
-    public User(String username, String email, String password_hash) {
-        this.username = username;
+    public User(String name, String email, String password_hash) {
+        this.name = name;
         this.email = email;
         this.password_hash = password_hash;
         this.created_time = null;

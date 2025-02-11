@@ -14,18 +14,20 @@ public class UserService {
     }
 
     public User findByUsername(String username) {
-        return userDAO.findByUsername(username);
+        return userDAO.findByName(username);
     }
 
-    public boolean createUser(String username, String email, String password_hash) {
-        User user = new User(username, email, password_hash);
+    public boolean createUser(String name, String email, String password_hash) {
+        User user = new User(name, email, password_hash);
         userDAO.save(user);
         return true;
     }
 
     public boolean deleteUserByUsername(String username) {
-        User user = userDAO.findByUsername(username);
-        userDAO.delete(user);
+        User user = userDAO.findByName(username);
+        if(user != null) {
+            userDAO.delete(user);
+        }
         return true;
     }
 
