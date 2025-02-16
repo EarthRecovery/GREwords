@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "user_word_list")
 @Getter
@@ -18,12 +20,19 @@ public class UserWordList {
     private Long id;
 
     @Column(nullable = false)
-    private int word_list_id;
+    private Long word_list_id;
 
     @Column(nullable = false)
-    private int word_list_user_id;
+    private Long word_list_user_id;
 
     @Column(nullable = false)
-    private int wrong_word_list_id;
+    private Long wrong_word_list_id;
+
+    @Column(nullable = false)
+    private Long user_word_progress_id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date created_at;
 
 }

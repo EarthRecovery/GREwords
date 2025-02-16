@@ -1,11 +1,10 @@
 package com.BetterGREwords.repository;
 
-import com.BetterGREwords.model.User;
+import com.BetterGREwords.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserDAO extends JpaRepository<User, Long> {
-    User findByName(String name);  // find User Entity based on the Username
-    User findByEmail(String email);  // find User Entity based on the Email
+public interface UserDAO extends JpaRepository<Users, Long> {
+
 }

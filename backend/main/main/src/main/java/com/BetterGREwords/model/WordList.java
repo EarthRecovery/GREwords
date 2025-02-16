@@ -19,11 +19,11 @@ public class WordList {
     private Long id;
 
     @Column(nullable = false)
-    private int word_list_id;
+    private Long word_list_id;
 
     @Column(nullable = false)
     private String word_list_name;
 
     @Column(nullable = false)
-    private int word_id;
+    private Long word_id;
 }

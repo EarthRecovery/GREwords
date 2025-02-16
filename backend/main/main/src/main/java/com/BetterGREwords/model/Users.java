@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,17 +34,14 @@ public class User {
     private Date created_time;
 
     @Column()
-    private int favourite_table_user_id;
+    private Integer favourite_table_user_id;
 
     @Column()
-    private int word_list_user_id;
+    private Integer word_list_user_id;
 
-    public User(String name, String email, String password_hash) {
-        this.name = name;
-        this.email = email;
-        this.password_hash = password_hash;
-        this.created_time = null;
-        this.favourite_table_user_id = -1;
-        this.word_list_user_id = -1;
+    @PrePersist
+    protected void onCreate() {
+        this.created_time = new Date();
     }
+
 }

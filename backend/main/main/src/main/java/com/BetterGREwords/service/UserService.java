@@ -1,6 +1,6 @@
 package com.BetterGREwords.service;
 
-import com.BetterGREwords.model.User;
+import com.BetterGREwords.model.Users;
 import com.BetterGREwords.repository.UserDAO;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +13,20 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public User findByUsername(String username) {
-        return userDAO.findByName(username);
+    /**
+     * Add a new user by instance
+     */
+    public Users createUser(Users user){
+        return userDAO.save(user);
     }
 
-    public boolean createUser(String name, String email, String password_hash) {
-        User user = new User(name, email, password_hash);
-        userDAO.save(user);
-        return true;
+    /**
+     * Add a new user by properties
+     */
+    public Users createUser(String name, String password_hash, String email){
+        Users user = new Users(null, name, email, password_hash, null, null, null);
+        return userDAO.save(user);
     }
 
-    public boolean deleteUserByUsername(String username) {
-        User user = userDAO.findByName(username);
-        if(user != null) {
-            userDAO.delete(user);
-        }
-        return true;
-    }
 
 }

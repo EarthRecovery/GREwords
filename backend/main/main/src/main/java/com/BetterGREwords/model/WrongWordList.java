@@ -21,11 +21,14 @@ public class WrongWordList {
     private Long id;
 
     @Column(nullable = false)
-    private int wrong_word_list_id;
+    private Long wrong_word_list_id;
 
     @Column(nullable = false)
     private Date wrong_time;
 
     @Column(nullable = false)
-    private int wrong_word_id;
+    private Long wrong_word_id;
+
+    @Column(nullable = false)
+    private int wrong_times;
 }
