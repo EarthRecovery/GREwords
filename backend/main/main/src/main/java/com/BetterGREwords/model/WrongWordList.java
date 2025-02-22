@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -20,15 +21,21 @@ public class WrongWordList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long wrong_word_list_id;
+    @Column(nullable = false, name = "wrong_word_list_id")
+    private Long wrongWordListId;
 
-    @Column(nullable = false)
-    private Date wrong_time;
+    @Column(nullable = false, name = "wrong_time")
+    private LocalDateTime wrongTime;
 
-    @Column(nullable = false)
-    private Long wrong_word_id;
+    @Column(nullable = false, name = "wrong_word_id")
+    private Long wrongWordId;
 
-    @Column(nullable = false)
-    private int wrong_times;
+    @Column(nullable = false, name = "wrong_times")
+    private int wrongTimes;
+
+    @PrePersist
+    protected void onCreate() {
+        this.wrongTime = LocalDateTime.now();
+    }
 }
+

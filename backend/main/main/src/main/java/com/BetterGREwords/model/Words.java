@@ -19,24 +19,23 @@ public class Words {
     private Long id;
 
     @Column(nullable = false, name = "word_name")
-    private String word_name;
+    private String wordName;
 
     @Column(nullable = false, name = "chinese_name")
-    private String chinese_name;
+    private String chineseName;
 
     @Column(nullable = true, name = "example_sentence_1")
-    private String example_sentence_1;
+    private String exampleSentence1;
 
     @Column(nullable = true, name = "example_sentence_1_chinese")
-    private String example_sentence_1_chinese;
+    private String exampleSentence1Chinese;
 
     @Column(nullable = true, name = "example_sentence_2")
-    private String example_sentence_2;
+    private String exampleSentence2;
 
     @Column(nullable = true, name = "example_sentence_2_chinese")
-    private String example_sentence_2_chinese;
+    private String exampleSentence2Chinese;
 
     @Column(nullable = false, name = "url")
     private String url;
-
 }

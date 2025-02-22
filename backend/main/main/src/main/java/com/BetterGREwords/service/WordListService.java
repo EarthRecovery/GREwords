@@ -4,6 +4,8 @@ import com.BetterGREwords.model.WordList;
 import com.BetterGREwords.repository.WordListDAO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WordListService {
 
@@ -25,5 +27,19 @@ public class WordListService {
      */
     public WordList createWordList(long wordListId, long wordId, String name){
         return this.wordListDAO.save(new WordList(null, wordListId, name, wordId));
+    }
+
+    /**
+     * get a wordList by its id
+     * @param wordListId the id of the wordList
+     * @return the wordList with the given id, if it does not exist return null
+     */
+    public List<WordList> getWordListById(long wordListId) {
+        try {
+            return wordListDAO.findByWordListId(wordListId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

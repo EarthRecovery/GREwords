@@ -46,20 +46,20 @@ public class GREWordsScraper {
                 Cell cell5 = row.getCell(5);
                 if(cell0 != null){
                     Words word = new Words();
-                    word.setWord_name(cell0.getStringCellValue());
-                    word.setChinese_name(cell1.getStringCellValue());
+                    word.setWordName(cell0.getStringCellValue());
+                    word.setChineseName(cell1.getStringCellValue());
                     words.add(word);
                 }
                 if(cell2 != null){
                     Words word = new Words();
-                    word.setWord_name(cell2.getStringCellValue());
-                    word.setChinese_name(cell3.getStringCellValue());
+                    word.setWordName(cell2.getStringCellValue());
+                    word.setChineseName(cell3.getStringCellValue());
                     words.add(word);
                 }
                 if(cell4 != null) {
                     Words word = new Words();
-                    word.setWord_name(cell4.getStringCellValue());
-                    word.setChinese_name(cell5.getStringCellValue());
+                    word.setWordName(cell4.getStringCellValue());
+                    word.setChineseName(cell5.getStringCellValue());
                     words.add(word);
                 }
             }
@@ -71,7 +71,7 @@ public class GREWordsScraper {
 
     public void getSentences(){
         for(Words word : this.words) {
-            String url = URL + word.getWord_name() + "/";
+            String url = URL + word.getWordName() + "/";
             word.setUrl(url);
             int count = 0;
 
@@ -81,7 +81,7 @@ public class GREWordsScraper {
                 Elements exampleBlocks = doc.select("div.exampleLists");
 
                 count++;
-                System.out.println("Get example sentences for " + word.getWord_name() + "word_count " + count);
+                System.out.println("Get example sentences for " + word.getWordName() + "word_count " + count);
 
                 Element example1 = null;
                 Element example2 = null;
@@ -98,8 +98,8 @@ public class GREWordsScraper {
                     // 获取第一个例句
                     Elements example1Text = example1.select("p");
                     if (example1Text.size() >= 2) {
-                        word.setExample_sentence_1(example1Text.get(0).text());
-                        word.setExample_sentence_1_chinese(example1Text.get(1).text());
+                        word.setExampleSentence1(example1Text.get(0).text());
+                        word.setExampleSentence1Chinese(example1Text.get(1).text());
                     }
                 }
 
@@ -107,8 +107,8 @@ public class GREWordsScraper {
                     // 获取第二个例句
                     Elements example2Text = example2.select("p");
                     if (example2Text.size() >= 2) {
-                        word.setExample_sentence_2(example2Text.get(0).text());
-                        word.setExample_sentence_2_chinese(example2Text.get(1).text());
+                        word.setExampleSentence2(example2Text.get(0).text());
+                        word.setExampleSentence2Chinese(example2Text.get(1).text());
                     }
                 }
 

@@ -18,12 +18,12 @@ public class WordList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long word_list_id;
+    @Column(nullable = false, name = "word_list_id")
+    private Long wordListId;
 
-    @Column(nullable = false)
-    private String word_list_name;
+    @Column(nullable = false, name = "word_list_name")
+    private String wordListName;
 
-    @Column(nullable = false)
-    private Long word_id;
+    @Column(nullable = false, name = "word_id")
+    private Long wordId;
 }

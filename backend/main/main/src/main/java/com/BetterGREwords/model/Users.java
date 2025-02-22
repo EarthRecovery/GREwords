@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,25 +24,23 @@ public class Users {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column()
+    @Column(nullable = true)
     private String email;
 
-    @Column(nullable = false)
-    private String password_hash;
+    @Column(nullable = false, name = "password_hash")  // 让数据库字段与 Java 字段映射
+    private String passwordHash;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column()
-    private Date created_time;
+    @Column(nullable = false, name = "created_time", updatable = false)
+    private LocalDateTime createdTime;
 
-    @Column()
-    private Integer favourite_table_user_id;
+    @Column(nullable = true, name = "favourite_table_user_id")
+    private Integer favouriteTableUserId;
 
-    @Column()
-    private Integer word_list_user_id;
+    @Column(nullable = true, name = "word_list_user_id")
+    private Integer wordListUserId;
 
     @PrePersist
     protected void onCreate() {
-        this.created_time = new Date();
+        this.createdTime = LocalDateTime.now();
     }
-
 }

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,24 +16,36 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserWordList {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long word_list_id;
+    @Column(nullable = false, name = "word_list_id")
+    private Long wordListId;
 
-    @Column(nullable = false)
-    private Long word_list_user_id;
+    @Column(nullable = false, name = "word_list_user_id")
+    private Long wordListUserId;
 
-    @Column(nullable = false)
-    private Long wrong_word_list_id;
+    @Column(nullable = false, name = "wrong_word_list_id")
+    private Long wrongWordListId;
 
-    @Column(nullable = false)
-    private Long user_word_progress_id;
+    @Column(nullable = false, name = "user_word_progress_id")
+    private Long userWordProgressId;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date created_at;
+    @Column(nullable = false, name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public UserWordList(Long wordListId, Long wordListUserId, Long wrongWordListId, Long userWordProgressId) {
+        this.wordListId = wordListId;
+        this.wordListUserId = wordListUserId;
+        this.wrongWordListId = wrongWordListId;
+        this.userWordProgressId = userWordProgressId;
+        this.createdAt = LocalDateTime.now();
+    }
 }

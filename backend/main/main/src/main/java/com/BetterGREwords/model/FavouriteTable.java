@@ -13,13 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FavouriteTable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private int favourite_table_user_id;
+    @Column(nullable = false, name = "favourite_table_user_id")  // 映射数据库字段
+    private int favouriteTableUserId;
 
-    @Column(nullable = false)
-    private int favourite_word_id;
+    @Column(nullable = false, name = "favourite_word_id")  // 映射数据库字段
+    private int favouriteWordId;
 }

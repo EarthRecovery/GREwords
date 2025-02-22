@@ -18,23 +18,22 @@ public class UserWordProgress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long user_word_list_id;
+    @Column(nullable = false, name = "user_word_progress_id")
+    private Long userWordProgressId;
 
-    @Column(nullable = false)
-    private Long word_id;
+    @Column(nullable = false, name = "word_id")
+    private Long wordId;
 
-    @Column(nullable = true)
-    private int correct_times;
+    @Column(nullable = true, name = "correct_times")
+    private int correctTimes;
 
-    @Column(nullable = true)
-    private int review_times;
+    @Column(nullable = true, name = "review_times")
+    private int reviewTimes;
 
-    public UserWordProgress(Long user_word_list_id, Long word_id){
-        this.id = null;
-        this.user_word_list_id = user_word_list_id;
-        this.word_id = word_id;
-        this.correct_times = 0;
-        this.review_times = 0;
+    public UserWordProgress(Long userWordProgressId, Long wordId) {
+        this.userWordProgressId = userWordProgressId;
+        this.wordId = wordId;
+        this.correctTimes = 0;
+        this.reviewTimes = 0;
     }
 }
