@@ -19,7 +19,7 @@ public class ReciteService {
     }
 
     /**
-     * get 10 Words for recite by user_word_progress_id
+     * get 10 Words (0 review times) for recite by user_word_progress_id
      */
     public List<Words> getReciteWords(long userWordProgressId) {
         List<Long> wordIds = userWordProgressService.generateRandomWordIdsWithZeroReviewTimes(userWordProgressId, 10);

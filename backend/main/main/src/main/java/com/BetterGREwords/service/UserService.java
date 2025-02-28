@@ -28,5 +28,19 @@ public class UserService {
         return userDAO.save(user);
     }
 
+    /**
+     * check whether a email is present in the database
+     */
+    public boolean isEmailPresent(String email) {
+        return userDAO.findByEmail(email).isPresent();
+    }
+
+    /**
+     * get a user by email
+     */
+    public Users getUserByEmail(String email) {
+        return userDAO.findByEmail(email).orElse(null);
+    }
+
 
 }

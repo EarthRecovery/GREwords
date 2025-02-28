@@ -22,11 +22,11 @@ public class MainApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(MainApplication.class, args);
-		ReciteService reciteService = context.getBean(ReciteService.class);
-		List<Words> words = reciteService.getReciteWords(1);
-		for (Words word : words) {
-			System.out.println(word.getWordName());
-		}
+//		ReciteService reciteService = context.getBean(ReciteService.class);
+//		List<Words> words = reciteService.getReciteWords(1);
+//		for (Words word : words) {
+//			System.out.println(word.getWordName());
+//		}
 	}
 
 }
