@@ -59,6 +59,34 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
+    @PostMapping("/loginByEmail")
+    public ResponseEntity<?> registerByEmail(@RequestParam String email, @RequestParam String password) {
+        if (!EMAIL_PATTERN.matcher(email).matches()) {
+            ErrorResponse errorResponse = new ErrorResponse("Invalid email format", HttpStatus.BAD_REQUEST.value());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+        if(!userService.isEmailPresent(email)) {
+            ErrorResponse errorResponse = new ErrorResponse("Email do not exist", HttpStatus.CONFLICT.value());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+        }
+        if(password.isEmpty()) {
+            ErrorResponse errorResponse = new ErrorResponse("Password cannot be empty", HttpStatus.BAD_REQUEST.value());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+        if(password.length() < 3 || password.length() > 20) {
+            ErrorResponse errorResponse = new ErrorResponse("Password length should be between 3 and 20", HttpStatus.BAD_REQUEST.value());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+        String encryptedPassword = hashPassword(password);
+        Users user = userService.getUserByEmail(email);
+        if(!user.getPasswordHash().equals(encryptedPassword)) {
+            ErrorResponse errorResponse = new ErrorResponse("Password is incorrect", HttpStatus.UNAUTHORIZED.value());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
+
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

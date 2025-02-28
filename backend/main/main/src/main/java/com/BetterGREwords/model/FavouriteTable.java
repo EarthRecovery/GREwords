@@ -19,8 +19,8 @@ public class FavouriteTable {
     private Long id;
 
     @Column(nullable = false, name = "favourite_table_user_id")  // 映射数据库字段
-    private int favouriteTableUserId;
+    private Long favouriteTableUserId;
 
     @Column(nullable = false, name = "favourite_word_id")  // 映射数据库字段
-    private int favouriteWordId;
+    private Long favouriteWordId;
 }
