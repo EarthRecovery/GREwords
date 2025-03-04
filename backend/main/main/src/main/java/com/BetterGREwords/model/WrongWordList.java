@@ -33,8 +33,14 @@ public class WrongWordList {
     @Column(nullable = false, name = "wrong_times")
     private int wrongTimes;
 
-    @PrePersist
-    protected void onCreate() {
+    @Column(nullable = false, name = "wrong_user_id")
+    private Long wrongUserId;
+
+    public WrongWordList(Long wrongWordId, Long wrongUserId, int wrongTimes, Long wrongWordListId) {
+        this.wrongWordId = wrongWordId;
+        this.wrongUserId = wrongUserId;
+        this.wrongTimes = wrongTimes;
+        this.wrongWordListId = wrongWordListId;
         this.wrongTime = LocalDateTime.now();
     }
 }

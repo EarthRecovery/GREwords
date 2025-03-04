@@ -6,10 +6,7 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +29,28 @@ public class ReciteController {
         }else{
             return ResponseEntity.status(HttpStatus.OK).body(words);
         }
+    }
+
+    /**
+     * design controller when recite a word
+     */
+
+    /**
+     * if user regret the word, update wrong word list and user word progress
+     */
+
+    @PostMapping("wrongWord")
+    public ResponseEntity<?> wrongWord(@RequestParam long userWordListId, @RequestParam long wordId){
+        reciteService.wrongWord(userWordListId, wordId);
+        return ResponseEntity.status(HttpStatus.OK).body("success");
+    }
+
+    /**
+     * if user remember the word, update user word progress
+     */
+    @PostMapping("rightWord")
+    public ResponseEntity<?> rightWord(@RequestParam long userWordListId, @RequestParam long wordId){
+        reciteService.rightWord(userWordListId, wordId);
+        return ResponseEntity.status(HttpStatus.OK).body("success");
     }
 }

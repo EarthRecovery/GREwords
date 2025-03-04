@@ -38,4 +38,17 @@ public class UserWordListService {
 //        userWordProgressService.createDefaultWordProgressHistory(maxUserWordProgressId + 1, wordListId);
 
     }
+
+    /**
+     * get instance by user word list id
+     */
+    public UserWordList getUserWordListById(long Id){
+        UserWordList userWordList = userWordListDAO.findById(Id).orElse(null);
+        if(userWordList == null){
+            throw new IllegalArgumentException("UserWordList with id " + Id + " does not exist");
+        }
+        return userWordList;
+    }
+
+
 }
