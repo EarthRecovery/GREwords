@@ -1,18 +1,22 @@
 package com.BetterGREwords.service;
 
 import com.BetterGREwords.model.WordList;
+import com.BetterGREwords.model.Words;
 import com.BetterGREwords.repository.WordListDAO;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class WordListService {
 
     private final WordListDAO wordListDAO;
+    private final WordsService wordsService;
 
-    public WordListService(WordListDAO wordListDAO) {
+    public WordListService(WordListDAO wordListDAO, WordsService wordsService) {
         this.wordListDAO = wordListDAO;
+        this.wordsService = wordsService;
     }
 
     /**
@@ -41,5 +45,19 @@ public class WordListService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * find all words in the wordList by word list id
+     */
+    public List<Words> getWordsByWordListId(long wordListId) {
+        List<WordList> wordLists = wordListDAO.findByWordListId(wordListId);
+        List<Words> words = new ArrayList<>();
+        for(WordList wordList : wordLists){
+            Long wordId = wordList.getWordId();
+            Words word = wordsService.getWordById(wordId);
+            words.add(word);
+        }
+        return words;
     }
 }

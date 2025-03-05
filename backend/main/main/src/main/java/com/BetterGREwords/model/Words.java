@@ -38,4 +38,17 @@ public class Words {
 
     @Column(nullable = false, name = "url")
     private String url;
+
+    @Column(nullable = false, name = "similar_word_1")
+    private Long similarWord1;
+
+    @Column(nullable = false, name = "similar_word_2")
+    private Long similarWord2;
+
+    @Column(nullable = false, name = "similar_word_3")
+    private Long similarWord3;
+
+    @Column(nullable = false, name = "similar_word_4")
+    private Long similarWord4;
+
 }

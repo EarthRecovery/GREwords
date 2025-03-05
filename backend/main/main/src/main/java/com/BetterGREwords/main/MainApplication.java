@@ -4,6 +4,7 @@ import com.BetterGREwords.model.UserWordProgress;
 import com.BetterGREwords.model.WordList;
 import com.BetterGREwords.model.Words;
 import com.BetterGREwords.service.*;
+import com.BetterGREwords.utils.FindSimilarWords;
 import com.BetterGREwords.utils.GREWordsScraper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,8 @@ public class MainApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(MainApplication.class, args);
+		FindSimilarWords findSimilarWords = context.getBean(FindSimilarWords.class);
+		findSimilarWords.run();
 //		ReciteService reciteService = context.getBean(ReciteService.class);
 //		List<Words> words = reciteService.getReciteWords(1);
 //		for (Words word : words) {
