@@ -23,8 +23,8 @@ public class MainApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(MainApplication.class, args);
-		FindSimilarWords findSimilarWords = context.getBean(FindSimilarWords.class);
-		findSimilarWords.run();
+//		FindSimilarWords findSimilarWords = context.getBean(FindSimilarWords.class);
+//		findSimilarWords.run();
 //		ReciteService reciteService = context.getBean(ReciteService.class);
 //		List<Words> words = reciteService.getReciteWords(1);
 //		for (Words word : words) {
