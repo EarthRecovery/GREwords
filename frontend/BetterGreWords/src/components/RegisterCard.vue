@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useMessage } from 'naive-ui';
 import { registerUser } from '@/api/register'; 
+import router from '@/router';
 
 const message = useMessage();
 const username = ref('');
@@ -28,12 +29,21 @@ const handleRegister = async() => {
   }
 
   try {
-    await registerUser({
+    const response = await registerUser({
       name: username.value,
       password: password.value,
       email: email.value
     });
-    message.success(`Registered successfully as ${username.value}`);
+    if(response.success){
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(response.user));
+      localStorage.setItem('isLoggedIn', 'true');
+      message.success(`Registered successfully as ${username.value}`);
+      router.push('/main');
+    }else {
+    throw new Error(response.message || 'Registration failed');
+    }
+    
   } catch (error) {
     message.error(error.message || 'Registration failed');
   }
