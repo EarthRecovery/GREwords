@@ -24,8 +24,8 @@ public class FavouriteTableController {
         this.wordsService = wordsService;
     }
 
-    @GetMapping("/getAll/{userId}")
-    public ResponseEntity<?> getAllFavouriteWordsByUserId(@PathVariable("userId") Long userId){
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAllFavouriteWordsByUserId(@RequestParam Long userId){
         if(userId == null){
             ErrorResponse errorResponse = new ErrorResponse("userId is null", HttpStatus.BAD_REQUEST.value());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);

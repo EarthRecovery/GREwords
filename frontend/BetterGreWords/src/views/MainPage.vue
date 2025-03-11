@@ -20,7 +20,7 @@ const handleMenuSelect = (key) => {
     <n-layout-sider width="240px" bordered>
       <n-menu :options="menuOptions" @update:value="handleMenuSelect" />
     </n-layout-sider>
-    <n-layout-content style="padding: 20px; min-height: 100vh;">
+    <n-layout-content style="width:100%">
         <router-view></router-view> 
     </n-layout-content>
   </n-layout>
