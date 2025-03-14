@@ -1,6 +1,7 @@
 package com.BetterGREwords.service;
 
 import com.BetterGREwords.model.WordList;
+import com.BetterGREwords.model.WordListOutput;
 import com.BetterGREwords.model.Words;
 import com.BetterGREwords.repository.WordListDAO;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class WordListService {
      */
     public List<WordList> getWordListById(long wordListId) {
         try {
-            return wordListDAO.findByWordListId(wordListId);
+            return wordListDAO.findByWordListId(wordListId).orElse(null);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -51,7 +52,10 @@ public class WordListService {
      * find all words in the wordList by word list id
      */
     public List<Words> getWordsByWordListId(long wordListId) {
-        List<WordList> wordLists = wordListDAO.findByWordListId(wordListId);
+        List<WordList> wordLists = wordListDAO.findByWordListId(wordListId).orElse(null);
+        if(wordLists.isEmpty()){
+            return null;
+        }
         List<Words> words = new ArrayList<>();
         for(WordList wordList : wordLists){
             Long wordId = wordList.getWordId();
@@ -59,5 +63,33 @@ public class WordListService {
             words.add(word);
         }
         return words;
+    }
+
+    /**
+     * get name of the wordList by word list id
+     */
+    public String getNameByWordListId(long wordListId) {
+        List<WordList> wordLists = wordListDAO.findByWordListId(wordListId).orElse(null);
+        if (wordLists == null) {
+            return null;
+        }
+        return wordLists.get(0).getWordListName();
+    }
+
+    /**
+     * get all wordLists
+     */
+    public List<WordListOutput> getAllwordLists(){
+        List<WordListOutput> wordListOutputs = new ArrayList<>();
+        int i=1;
+        while(true){
+            List<Words> wL = getWordsByWordListId(i);
+            if(wL == null){
+                return wordListOutputs;
+            }
+            String name = getNameByWordListId(i);
+            wordListOutputs.add(new WordListOutput(name, wL));
+            i++;
+        }
     }
 }

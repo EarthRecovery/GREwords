@@ -53,5 +53,12 @@ public class FindSimilarWords {
                     similarWords.get(1).getSecond(), similarWords.get(2).getSecond(),
                     similarWords.get(3).getSecond());
         }
+
+        for(Words w : wordsList){
+            List<Pair<String,Long>> similarWords = findSimilarWords(w.getWordName());
+            wordsDAO.updateSimilarWordsName(w.getId(), similarWords.get(0).getFirst(),
+                    similarWords.get(1).getFirst(), similarWords.get(2).getFirst(),
+                    similarWords.get(3).getFirst());
+        }
     }
 }

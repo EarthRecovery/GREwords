@@ -42,13 +42,21 @@ public class Words {
     @Column(nullable = false, name = "similar_word_1")
     private Long similarWord1;
 
+    private String similarWord1Name;
+
     @Column(nullable = false, name = "similar_word_2")
     private Long similarWord2;
+
+    private String similarWord2Name;
 
     @Column(nullable = false, name = "similar_word_3")
     private Long similarWord3;
 
+    private String similarWord3Name;
+
     @Column(nullable = false, name = "similar_word_4")
     private Long similarWord4;
+
+    private String similarWord4Name;
 
 }

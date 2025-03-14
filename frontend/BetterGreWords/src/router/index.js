@@ -5,6 +5,7 @@ import UserView from '@/components/UserView.vue'
 import WordListView from '@/components/WordListView.vue'
 import UserWordListView from '@/components/UserWordListView.vue'
 import MainPage from '@/views/MainPage.vue'
+import ReciteCard from '@/components/ReciteCard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,10 @@ const router = createRouter({
         { path: 'word-list', component: WordListView },
         { path: 'user-word-list', component: UserWordListView }
       ]
+    },
+    {
+      path: '/recite-card',
+      component: ReciteCard,
     }
   ],
 })

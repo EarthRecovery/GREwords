@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface WordListDAO extends JpaRepository<WordList, Long> {
     @Query("SELECT w FROM WordList w WHERE w.wordListId = :wordListId")
-    List<WordList> findByWordListId(Long wordListId);
+    Optional<List<WordList>> findByWordListId(Long wordListId);
 }

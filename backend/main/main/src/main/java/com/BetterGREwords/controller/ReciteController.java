@@ -21,8 +21,8 @@ public class ReciteController {
         this.reciteService = reciteService;
     }
 
-    @GetMapping("/get10RandomWords/{userWordProgressId}")
-    public ResponseEntity<List<Words>> getReciteWords(@PathVariable("userWordProgressId") long userWordProgressId) {
+    @GetMapping("/get10RandomWords")
+    public ResponseEntity<List<Words>> getReciteWords(@RequestParam long userWordProgressId) {
         List<Words> words = reciteService.getReciteWords(userWordProgressId);
         if(words.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(words);

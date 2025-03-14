@@ -20,5 +20,12 @@ public interface WordsDAO extends JpaRepository<Words, Long> {
     int updateSimilarWords(@Param("wordId") Long wordId, @Param("similarWord1") Long similarWord1,
                            @Param("similarWord2") Long similarWord2, @Param("similarWord3") Long similarWord3,
                            @Param("similarWord4") Long similarWord4);
+
+    @Modifying
+    @Transactional
+    @Query( "UPDATE Words w SET w.similarWord1Name = :similarWord1, w.similarWord2Name = :similarWord2, w.similarWord3Name = :similarWord3, w.similarWord4Name = :similarWord4 WHERE w.id = :wordId")
+    int updateSimilarWordsName(@Param("wordId") Long wordId, @Param("similarWord1") String similarWord1,
+                               @Param("similarWord2") String similarWord2, @Param("similarWord3") String similarWord3,
+                               @Param("similarWord4") String similarWord4);
 }
 
