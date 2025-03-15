@@ -23,6 +23,10 @@ a,
 }
 
 .n-layout-scroll-container {
+  width:100%;
+}
 
+.n-space{
+  width:100%;
 }
 
